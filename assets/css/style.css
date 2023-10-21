@@ -1,0 +1,35 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    background: rgb(198, 204, 209);
+}
+header {
+    text-align: center;
+
+}
+.container {
+    background: #fff;
+    width: 90%;
+    margin: 100px auto 0;
+    border-radius: 10px;
+    padding: 30px 30px;
+    border: black solid;
+}
+
+#question-container {
+    font-size: medium;
+    color: bisque;
+    font-weight: 600;
+    border-bottom: 1px solid #333;
+    padding-bottom: 30px;
+    background-color: rgb(56, 88, 88);
+    border-radius: 10px;
+    border: black solid;
+    margin:auto;
+}
+

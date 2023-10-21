@@ -28,29 +28,24 @@
 // WHEN the game is over
 // THEN I can save my initials and my score
 
+var currentQuestion = 0;
+// ---------------------------------------
 
 var startButton = document.querySelector("#start-button");
 
 startButton.addEventListener("click", startQuiz);
 
+var nextButton = document.querySelector("#next-btn");
+nextButton.addEventListener("click", nextQuestion);
+
+var previousButton = document.querySelector("#pre-btn");
+previousButton.addEventListener("click", previousQuestion);
+
+// -----------------------------------------------
+
 function startQuiz() {
 
-    var question1 = JSON.parse(localStorage.getItem("question1"));
-
-    var question = document.querySelector("#question");
-    question.innerHTML = "Question " + question1.id + ": " + question1.question;
-
-    var option1 = document.querySelector("#for-answer1");
-    option1.innerHTML = question1.option1;
-
-    var option2 = document.querySelector("#for-answer2");
-    option2.innerHTML = question1.option2;
-
-    var option3 = document.querySelector("#for-answer3");
-    option3.innerHTML = question1.option3;
-
-    var option4 = document.querySelector("#for-answer4");
-    option4.innerHTML = question1.option4;
+    showQuestion(1);
 
     var startDiv = document.querySelector("#start-show");
     startDiv.setAttribute("style","visibility: hidden;");
@@ -58,8 +53,39 @@ function startQuiz() {
     var questionContainer = document.querySelector("#question-container");
     questionContainer.classList.add("question-container-show");
 
+    currentQuestion = 1;
 }
 
+function nextQuestion(){
+    currentQuestion = currentQuestion + 1;
+    showQuestion(currentQuestion);
+}
+
+function previousQuestion(){
+    if(currentQuestion > 1) {
+        currentQuestion = currentQuestion - 1;
+        showQuestion(currentQuestion);
+
+    }
+}
+function showQuestion(questionNumber) {
+    var question = JSON.parse(localStorage.getItem('question' + questionNumber));
+
+    var questionDescription = document.querySelector("#question");
+    questionDescription.innerHTML = "Question " + question.id + ": " + question.question;
+
+    var option1 = document.querySelector("#for-answer1");
+    option1.innerHTML = question.option1;
+
+    var option2 = document.querySelector("#for-answer2");
+    option2.innerHTML = question.option2;
+
+    var option3 = document.querySelector("#for-answer3");
+    option3.innerHTML = question.option3;
+
+    var option4 = document.querySelector("#for-answer4");
+    option4.innerHTML = question.option4;
+}
 
 
 

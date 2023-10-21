@@ -12,9 +12,15 @@
 // ```
 // GIVEN I am taking a code quiz
 // WHEN I click the start button
-// THEN a timer starts and I am presented with a question
+
+// THEN a timer starts  # TODO
+
+// and I am presented with a question ......DONE
+
 // WHEN I answer a question
 // THEN I am presented with another question
+
+
 // WHEN I answer a question incorrectly
 // THEN time is subtracted from the clock
 // WHEN all questions are answered or the timer reaches 0
@@ -23,15 +29,37 @@
 // THEN I can save my initials and my score
 
 
-var startButton = document.querySelector(".start-button");
-//var resetButton = document.querySelector(.reset-buton);
-// var quiz = document.querySelector(".quiz");
-// var win = document.querySelector(".win");
-// var lose = document.querySelector(.lose);
-//var timeCountEl = document.querySelector(".timer-count");
-// var timer:
-// var timerCount = 60;
-// var winsCounter = 0;
-// var loseCounter = 0;
-// var isWin = false;
-// var isWin = false;
+var startButton = document.querySelector("#start-button");
+
+startButton.addEventListener("click", startQuiz);
+
+function startQuiz() {
+
+    var question1 = JSON.parse(localStorage.getItem("question1"));
+
+    var question = document.querySelector("#question");
+    question.innerHTML = "Question " + question1.id + ": " + question1.question;
+
+    var option1 = document.querySelector("#for-answer1");
+    option1.innerHTML = question1.option1;
+
+    var option2 = document.querySelector("#for-answer2");
+    option2.innerHTML = question1.option2;
+
+    var option3 = document.querySelector("#for-answer3");
+    option3.innerHTML = question1.option3;
+
+    var option4 = document.querySelector("#for-answer4");
+    option4.innerHTML = question1.option4;
+
+    var startDiv = document.querySelector("#start-show");
+    startDiv.setAttribute("style","visibility: hidden;");
+
+    var questionContainer = document.querySelector("#question-container");
+    questionContainer.classList.add("question-container-show");
+
+}
+
+
+
+

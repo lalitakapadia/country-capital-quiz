@@ -1,4 +1,5 @@
 var question1 = {
+    id: 1,
     question: "Which one of the following is not a valid javaScript data type?",
     option1: "String",
     option2: "Boolean",
@@ -9,6 +10,7 @@ var question1 = {
 localStorage.setItem("question1", JSON.stringify(question1));
 
  var question2 = {
+    id: 2,
     question: "Which type of javaScript language is?",
     option1: "Obeject-Orianted",
     option2: "Object-Based",
@@ -19,6 +21,7 @@ localStorage.setItem("question1", JSON.stringify(question1));
  localStorage.setItem("question2", JSON.stringify(question2));
 
 var question3 = {
+    id: 3,
     question: "Which one of the following also known as Conditional Expression?",
     option1: "Alternative to if-else",
     option2: "Switch statement",
@@ -29,6 +32,7 @@ var question3 = {
 localStorage.setItem("question3", JSON.stringify(question3));
 
 var question4 = {
+    id: 4,
     question: "In JavaScript, what is a block of statement?",
     option1: "Conditional block",
     option2: "block that combines a number of statements into a single compound statement",

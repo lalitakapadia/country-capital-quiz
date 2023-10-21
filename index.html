@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple javaScript Quiz App</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<header>
+    <h1> JavaScript Quiz App</h1>
+</header>
+<body>
+    <div class = "container">
+        <div id= "question-container"  class="hide">
+            <div id="question">Question</div>
+            <div id="answer-buttons">
+                <input type="radio" id="answer1" value="1" name="answers">
+                <label for="answer1">answer 1</label><br>
+                <input type="radio" id="answer2" text="2" name="answers">
+                <label for="answer2">answer 2</label><br>
+                <input type="radio" id="answer3" text="3" name="answers">
+                <label for="answer3">answer 3</label><br>
+                <input type="radio" id="answer4" text="4" name="answers">
+                <label for="answer4">answer 4</label><br>
+            </div>
+        </div>
+        <div class="controls">
+            <button id="start-button" class="start-btn btn">Start</button>
+            <button id="next-btn" class="next-btn btn hide">Next</button>
+       </div>
+    </div>
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/script.js"></script>
+    
+</body>
+</html>

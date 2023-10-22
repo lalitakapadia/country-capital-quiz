@@ -7,7 +7,7 @@ var question1 = {
     option4: "Number",
     answer: "Date"
 };
-localStorage.setItem("question1", JSON.stringify(question1));
+localStorage.setItem("1", JSON.stringify(question1));
 
  var question2 = {
     id: 2,
@@ -18,7 +18,7 @@ localStorage.setItem("question1", JSON.stringify(question1));
     option4: "High-level",
     answer: "Object-Based"
  };
- localStorage.setItem("question2", JSON.stringify(question2));
+ localStorage.setItem("2", JSON.stringify(question2));
 
 var question3 = {
     id: 3,
@@ -29,7 +29,7 @@ var question3 = {
     option4: "immediate if",
     answer: "immediate if"
 };
-localStorage.setItem("question3", JSON.stringify(question3));
+localStorage.setItem("3", JSON.stringify(question3));
 
 var question4 = {
     id: 4,
@@ -40,4 +40,4 @@ var question4 = {
     option4: "block that contains a single statement",
     answer: "block that combines a number of statements into a single compound statement"
 };
-localStorage.setItem("question4", JSON.stringify(question4));
+localStorage.setItem("4", JSON.stringify(question4));

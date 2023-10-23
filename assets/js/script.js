@@ -87,9 +87,9 @@ function startQuiz() {
 function nextQuestion(){
     currentQuestion = currentQuestion + 1;
    
-//Store the correct answer for the game.
-// If answer is correct then time reamin same else minus 10 for wrong answer.
-    const radioButtons = document.querySelectorAll('input[name="answers"]');
+    //Store the correct answer for the game.
+    // If answer is correct then time reamin same else minus 10 for wrong answer.
+        const radioButtons = document.querySelectorAll('input[name="answers"]');
     let selectedAnswer;
     for (const radioButton of radioButtons) {
         if (radioButton.checked) {
@@ -105,8 +105,20 @@ function nextQuestion(){
         gameTime = gameTime - penulty;
     }
 
+    // last question
+    if(currentQuestion == 4) {
+        nextButton.innerHTML = "Submit";
+    }
 
+    // more than last question
+    if(currentQuestion > 4){
+        var questionContainer = document.querySelector("#question-container");
+        questionContainer.setAttribute("style","visibility: hidden;");
+    }
 
+    // less than last question
+
+    // if current question is less than or equal to 4 then only call showQuestion function
     showQuestion(currentQuestion);
 }
 

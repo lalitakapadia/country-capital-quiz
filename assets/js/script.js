@@ -26,6 +26,7 @@
 
 // WHEN all questions are answered or the timer reaches 0
 // THEN the game is over
+
 // WHEN the game is over
 // THEN I can save my initials and my score
 
@@ -33,9 +34,8 @@ var currentQuestion = 0;
 var gameTime = 60;
 var penulty = 10;
 var correctAnswer = "";
+var playerScore = 0;
 // TODO #1 declare a variable to store correct answer of the current question
-
-// ---------------------------------------
 
 var startButton = document.querySelector("#start-button");
 
@@ -47,7 +47,8 @@ nextButton.addEventListener("click", nextQuestion);
 var previousButton = document.querySelector("#pre-btn");
 previousButton.addEventListener("click", previousQuestion);
 
-var timeDisplay = document.querySelector("#time-display");
+var timer = document.querySelector("#timer");
+var score = document.querySelector("#score");
 
 var questionDescription = document.querySelector("#question");
 
@@ -65,7 +66,7 @@ var option2 = document.querySelector("#answer2");
 var option3 = document.querySelector("#answer3");
 var option4 = document.querySelector("#answer4");
 // -----------------------------------------------
-
+// When quiz starts hide the question-container and only shows Start button.
 function startQuiz() {
 
     showQuestion(1);
@@ -73,16 +74,21 @@ function startQuiz() {
     var startDiv = document.querySelector("#start-show");
     startDiv.setAttribute("style","visibility: hidden;");
 
+// when click on start then shows question container.
     var questionContainer = document.querySelector("#question-container");
     questionContainer.classList.add("question-container-show");
 
+//Get time Element from HTML for timer and first question appears and game starts.
     currentQuestion = 1;
-    timeDisplay.innerHTML = gameTime;
+    timer.innerHTML = gameTime;
+    score.innerHTML = "Score :" + playerScore;
 }
 
 function nextQuestion(){
     currentQuestion = currentQuestion + 1;
-
+   
+//Store the correct answer for the game.
+// If answer is correct then time reamin same else minus 10 for wrong answer.
     const radioButtons = document.querySelectorAll('input[name="answers"]');
     let selectedAnswer;
     for (const radioButton of radioButtons) {
@@ -91,11 +97,15 @@ function nextQuestion(){
             break;
         }
     }
-    if(selectedAnswer == correctAnswer){
+    if(selectedAnswer == correctAnswer) {
         // TODO ADD INTO SCORE
+        playerScore = playerScore + 1;
+        score.innerHTML = "Score :" + playerScore;
     } else {
         gameTime = gameTime - penulty;
     }
+
+
 
     showQuestion(currentQuestion);
 }
@@ -107,11 +117,15 @@ function previousQuestion(){
     }
 }
 
+
+// this function fetches question from local storage and displays on screen.
+// this function need parameter question number.
 function showQuestion(questionNumber) {
  
+    // get the asked question number from local storage.
     var question = JSON.parse(localStorage.getItem(questionNumber));
 
-    questionDescription.innerHTML = "Question " + question.id + ": " + question.question;
+    questionDescription.innerHTML = "Question" + question.id + ": " + question.question;
 
     option1Lable.innerHTML = question.option1;
     option1.checked = false;
@@ -130,8 +144,6 @@ function showQuestion(questionNumber) {
     option4.value = question.option4;
 
     correctAnswer = question.answer;
-    alert(correctAnswer);
-    // TODO #2 store answer in the global variable
 }
 
 
@@ -139,13 +151,12 @@ setInterval(checkGameTime,1000);
 
 function checkGameTime(){
     gameTime = gameTime - 1;
-    timeDisplay.innerHTML = gameTime;
+    timer.innerHTML = gameTime;
 
     if(gameTime <= 0){
         var questionContainer = document.querySelector("#question-container");
         questionContainer.setAttribute("style","visibility: hidden;");
     }
 
-    // put an if condition, to check if game time is less than or equal to 0. 
-    // hide the question section.
+    
  }

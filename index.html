@@ -11,14 +11,18 @@
 </header>
 <body>
     <div class = "container">
+        <div id="user">
+            <div id="username">
+                <label for="initials">Enter your name:</label>
+                <input type="text" id="initials">
+            </div>
+            <div id="score" class="hide">Score :</div>
+            <div id = "timer" class="hide">Time :</div>
+        </div>
         <div id="start-show" class="start-show">
             <button id="start-button">Start</button>
         </div>
-        <div id= "question-container"  class="question-container-hide">
-            <div id="time-display" class = "timer">
-                <div id="score">Score :</div>
-                <div id = "timer">Time :</div>
-            </div>
+        <div id= "question-container"  class="hide">
             <div id="question">Question</div>
             <div id="answer-buttons">
                 <input type="radio" id="answer1" value="1" name="answers">
@@ -31,8 +35,8 @@
                 <label id="for-answer4" for="answer4">answer 4</label><br>
             </div>
             <div class="controls">
-                <button id="pre-btn" class="pre-btn btn hide">Previous</button>
-                <button id="next-btn" class="next-btn btn hide">Next</button>
+                <button id="pre-btn" class="pre-btn">Previous</button>
+                <button id="next-btn" class="next-btn">Next</button>
            </div>
         </div>
 

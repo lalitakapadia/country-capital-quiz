@@ -35,7 +35,7 @@
 // -----------------------------------------------------
 
 var currentQuestion = 0;
-var gameTime = 60;
+var gameTime = 90; // in seconds
 var penulty = 10;
 var correctAnswer = "";
 var playerScore = 0;
@@ -46,7 +46,7 @@ var totalQuestions = 4;
 
 var startButton = document.querySelector("#start-button");
 var nextButton = document.querySelector("#next-btn");
-var previousButton = document.querySelector("#pre-btn");
+//var previousButton = document.querySelector("#pre-btn");
 var timer = document.querySelector("#timer");
 var score = document.querySelector("#score");
 var questionDescription = document.querySelector("#question");
@@ -71,7 +71,6 @@ var initials = document.querySelector("#initials");
 
 startButton.addEventListener("click", startQuiz);
 nextButton.addEventListener("click", nextQuestion);
-previousButton.addEventListener("click", previousQuestion);
 
 // -----------------------------------------------------
 //           Functions
@@ -88,8 +87,8 @@ function startQuiz() {
         // now disable the textbox so that user can not change the name during the quiz
         initials.disabled = true;
         // set the timer and score div elements' css style visibility display
-        timer.setAttribute("style","visibility: visible;");
-        score.setAttribute("style", "visibility: visible;");
+        timer.setAttribute("style","display: grid;");
+        score.setAttribute("style", "display: grid;");
     }
 
     // initilize the current question as 1 - because the quiz is just starting
@@ -100,13 +99,13 @@ function startQuiz() {
 
     // hide the start button div
     var startDiv = document.querySelector("#start-show");
-    startDiv.setAttribute("style","visibility: hidden;");
+    startDiv.setAttribute("style","display: none;");
 
     // show question div
     questionContainer.classList.add("question-container-show");
 
     // display timer
-    timer.innerHTML = gameTime;
+    timer.innerHTML = "Time remaining:" + Math.floor(gameTime / 60) + ":" + gameTime % 60;
 
     // dispaly current score, the initial is 0 to begin
     score.innerHTML = "Score :" + playerScore;
@@ -148,8 +147,8 @@ function nextQuestion(){
     // more than last question
     if(currentQuestion > totalQuestions){
         var questionContainer = document.querySelector("#question-container");
-        questionContainer.setAttribute("style","visibility: hidden;");
-
+        questionContainer.setAttribute("style","display: none;");
+        timer.setAttribute("style","display: none;");
     }
     
 }
@@ -189,16 +188,15 @@ function showQuestion(questionNumber) {
 }
 
 
-
+// is time up?
 function checkGameTime(){
     gameTime = gameTime - 1;
-    timer.innerHTML = "Time :" + gameTime;
-    timer.setAttribute("style","visibility: hidden;");
+    timer.innerHTML = "Time remaining:" + Math.floor(gameTime / 60) + ":" + gameTime % 60;
 
     if(gameTime <= 0){
         var questionContainer = document.querySelector("#question-container");
-        questionContainer.setAttribute("style","visibility: hidden;");
-       
+        questionContainer.setAttribute("style","display: none;");
+        timer.setAttribute("style","visibility: hidden;"); 
     }    
  }
  

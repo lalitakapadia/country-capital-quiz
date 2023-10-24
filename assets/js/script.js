@@ -30,58 +30,88 @@
 // WHEN the game is over
 // THEN I can save my initials and my score
 
+// -----------------------------------------------------
+//           Global variables
+// -----------------------------------------------------
+
 var currentQuestion = 0;
 var gameTime = 60;
 var penulty = 10;
 var correctAnswer = "";
 var playerScore = 0;
-// TODO #1 declare a variable to store correct answer of the current question
+var totalQuestions = 4;
+// -----------------------------------------------------
+//           Global variables - HTML Elements
+// -----------------------------------------------------
 
 var startButton = document.querySelector("#start-button");
-
-startButton.addEventListener("click", startQuiz);
-
 var nextButton = document.querySelector("#next-btn");
-nextButton.addEventListener("click", nextQuestion);
-
 var previousButton = document.querySelector("#pre-btn");
-previousButton.addEventListener("click", previousQuestion);
-
 var timer = document.querySelector("#timer");
 var score = document.querySelector("#score");
-
 var questionDescription = document.querySelector("#question");
-
 // Get all radio button lables from document object
 // Why - so that on first or next question, the program can show the latest question's options.
 var option1Lable = document.querySelector("#for-answer1");
 var option2Lable = document.querySelector("#for-answer2");
 var option3Lable = document.querySelector("#for-answer3");
 var option4Lable = document.querySelector("#for-answer4");
-
-
 // Get all radio button object, so that later on the program can change or check it's value.
 var option1 = document.querySelector("#answer1");
 var option2 = document.querySelector("#answer2");
 var option3 = document.querySelector("#answer3");
 var option4 = document.querySelector("#answer4");
-// -----------------------------------------------
+
+var questionContainer = document.querySelector("#question-container");
+var initials = document.querySelector("#initials");
+// get text box html element
+// -----------------------------------------------------
+//           Add Event Listners
+// -----------------------------------------------------
+
+startButton.addEventListener("click", startQuiz);
+nextButton.addEventListener("click", nextQuestion);
+previousButton.addEventListener("click", previousQuestion);
+
+// -----------------------------------------------------
+//           Functions
+// -----------------------------------------------------
+
 // When quiz starts hide the question-container and only shows Start button.
 function startQuiz() {
 
-    showQuestion(1);
+    // validate if the user has entered the name
+    if(initials.value==""){
+        alert("You must enter your name to start the quiz");
+        return;
+    } else{
+        // now disable the textbox so that user can not change the name during the quiz
+        initials.disabled = true;
+        // set the timer and score div elements' css style visibility display
+        timer.setAttribute("style","visibility: visible;");
+        score.setAttribute("style", "visibility: visible;");
+    }
 
+    // initilize the current question as 1 - because the quiz is just starting
+    currentQuestion = 1;
+
+    // call showQuestion function with parameter - current question number that is 1
+    showQuestion(currentQuestion);
+
+    // hide the start button div
     var startDiv = document.querySelector("#start-show");
     startDiv.setAttribute("style","visibility: hidden;");
 
-// when click on start then shows question container.
-    var questionContainer = document.querySelector("#question-container");
+    // show question div
     questionContainer.classList.add("question-container-show");
 
-//Get time Element from HTML for timer and first question appears and game starts.
-    currentQuestion = 1;
+    // display timer
     timer.innerHTML = gameTime;
+
+    // dispaly current score, the initial is 0 to begin
     score.innerHTML = "Score :" + playerScore;
+
+    setInterval(checkGameTime,1000);
 }
 
 function nextQuestion(){
@@ -106,20 +136,22 @@ function nextQuestion(){
     }
 
     // last question
-    if(currentQuestion == 4) {
+    if(currentQuestion == totalQuestions) {
         nextButton.innerHTML = "Submit";
     }
 
-    // more than last question
-    if(currentQuestion > 4){
-        var questionContainer = document.querySelector("#question-container");
-        questionContainer.setAttribute("style","visibility: hidden;");
+       // if current question is less than or equal to 4 then only call showQuestion function
+    if(currentQuestion <= totalQuestions){
+        showQuestion(currentQuestion);
     }
 
-    // less than last question
+    // more than last question
+    if(currentQuestion > totalQuestions){
+        var questionContainer = document.querySelector("#question-container");
+        questionContainer.setAttribute("style","visibility: hidden;");
 
-    // if current question is less than or equal to 4 then only call showQuestion function
-    showQuestion(currentQuestion);
+    }
+    
 }
 
 function previousQuestion(){
@@ -128,8 +160,6 @@ function previousQuestion(){
         showQuestion(currentQuestion);
     }
 }
-
-
 // this function fetches question from local storage and displays on screen.
 // this function need parameter question number.
 function showQuestion(questionNumber) {
@@ -159,16 +189,16 @@ function showQuestion(questionNumber) {
 }
 
 
-setInterval(checkGameTime,1000);
 
 function checkGameTime(){
     gameTime = gameTime - 1;
-    timer.innerHTML = gameTime;
+    timer.innerHTML = "Time :" + gameTime;
+    timer.setAttribute("style","visibility: hidden;");
 
     if(gameTime <= 0){
         var questionContainer = document.querySelector("#question-container");
         questionContainer.setAttribute("style","visibility: hidden;");
-    }
-
-    
+       
+    }    
  }
+ 

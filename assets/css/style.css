@@ -13,7 +13,12 @@ header {
 
 }
 
-.question-container-hide{
+#user{
+    display: grid;
+    width: 100%;
+}
+
+.hide{
     visibility:hidden;
 }
 
@@ -53,3 +58,25 @@ header {
     visibility: visible;
 }
 
+/* When using `max-width` as the breakpoint, you must go from widest to narrowest to avoid conflict */
+
+/* desktop - header changes color */
+@media screen and (min-width: 768px) {
+    #user{
+        grid-template-columns: repeat(3, 1fr);
+    }
+    }
+    
+    /* tablet - navbar changes color */
+    @media screen and (max-width: 768px) {
+    #user{
+        grid-template-columns: repeat(2, 1fr);
+    }
+    }
+    
+    /* Small smartphones - image placeholders change color */
+    @media screen and (max-width: 576px) {
+    #user{
+        grid-template-columns: repeat(1, 1fr);
+    }
+}

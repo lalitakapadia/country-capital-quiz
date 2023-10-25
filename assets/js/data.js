@@ -41,3 +41,36 @@ var question4 = {
     answer: "block that combines a number of statements into a single compound statement"
 };
 localStorage.setItem("4", JSON.stringify(question4));
+
+var question5 = {
+    id: 5,
+    question: "Inside which HTML element do we put the javaScript?",
+    option1: "scripting",
+    option2: "js",
+    option3: "script",
+    option4: "javascript",
+    answer: "script"
+    };
+localStorage.setItem("5", JSON.stringify(question5));
+
+var question6 = {
+    id: 6,
+    question: "The \"function\" and \"var\" are known as?",
+    option1: "keyword",
+    option2: "Data typeof",
+    option3: "Declaration statements",
+    option4: "Prototype",
+    answer: "Declaration statements"
+};
+localStorage.setItem("6", JSON.stringify(question6));
+
+var question7 = {
+    id: 7,
+    question: "When interpreter encounters an empty statements, what it will do?",
+    option1: "Shows a warning",
+    option2: "Prompts to complete the statement",
+    option3: "Throws an error",
+    option4: "Ignores the statements",
+    answer: "Ignores the statements"
+};
+localStorage.setItem("7", JSON.stringify(question7));

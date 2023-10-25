@@ -8,9 +8,10 @@
 body {
     background: rgb(198, 204, 209);
 }
-header {
-    text-align: center;
 
+h1 {
+    text-align: center;
+    padding: 10px;
 }
 
 #user{
@@ -41,7 +42,7 @@ header {
     width: 90%;
     margin: 100px auto 0;
     border-radius: 10px;
-    padding: 30px 30px;
+    padding: 20px 20px;
     border: black solid;
 }
 
@@ -61,6 +62,11 @@ header {
 
 .question-container-show div {
     margin: 10px;
+}
+
+.result-show{
+    visibility: visible;
+    margin: 30px;
 }
 
 /* When using `max-width` as the breakpoint, you must go from widest to narrowest to avoid conflict */
